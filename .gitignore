@@ -1,0 +1,12 @@
+
+TelegramBotMenu/obj/
+
+TelegramBotMenu.Tests/obj/
+
+.vscode/
+
+.idea/
+
+TelegramBotMenu/bin/
+
+TelegramBotMenu.Tests/bin/
