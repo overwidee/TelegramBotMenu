@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Authors>the_shichko</Authors>
+    <Description>Extension for send message with pagination InlineKeyboardMarkup</Description>
+    <RepositoryUrl>https://github.com/the-shichko/TelegramBotMenu</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
