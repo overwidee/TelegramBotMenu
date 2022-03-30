@@ -1,8 +1,15 @@
-## How to use Menu-Extension
+# How to use Menu-Extension
 
-### Pagination
+First of all, you need to initialize the object of TelegramBotClient and run.
+```C#
+var botClient = new TelegramBotClient(token);
+...
+var me = await botClient.GetMeAsync();
+```
 
-* Initialize your list of objects
+## ➡Pagination
+
+Initialize your list of objects
 
 ```C#
 List<MenuButtonModel> buttonModels = new()
@@ -18,13 +25,8 @@ List<MenuButtonModel> buttonModels = new()
     new MenuButtonModel("Button9", "Button9Value"),
 };
 ```
-* Initialize and start Telegram Bot
-```C#
-var botClient = new TelegramBotClient(token);
-...
-var me = await botClient.GetMeAsync();
-```
-* Use `GetPaginationInlineKeyboard` method for get InlineKeyboardMarkup and send telegram message
+
+Use `GetPaginationInlineKeyboard` method for get InlineKeyboardMarkup and send telegram message
 
 ```C#
 const int columnCount = 2;
@@ -33,18 +35,45 @@ var replyMenu = botClient.GetPaginationInlineKeyboard(buttonModels, columnCount,
 await botClient.SendTextMessageAsync(chatId, "YourMessage", replyMarkup: replyMenu);
 ```
 
-### Click button `NEXT/PREV`
+## 👆Click button `NEXT/PREV`
 
-* You have to send `clickedNavigation`
+You have to send `clickedNavigation`
 ```C#
 // clickedNavigation - Data from CallbackQuery
 var replyMenu = client.GetPaginationInlineKeyboard(buttonModels, columnCount, rowCount, clickedNavigation);
 await botClient.EditMessageReplyMarkupAsync(chatId, messageId, replyMenu);
 ```
 
-### Example
+## 🌳Tree architecture (since version 0.0.2)
 
-![image](https://user-images.githubusercontent.com/36662441/160297013-e9d6a0e8-b169-456f-8afe-99b97be2580e.png)
-![image](https://user-images.githubusercontent.com/36662441/160297046-aac479f9-45a1-419e-a569-0455b12c3454.png)
+In addition to navigation, you can send child elements to the constructor for a tree-like architecture.
+```C#
+var childrenItems = new List<MenuButtonModel>() { new MenuButtonModel("ButtonInside", "InsideData") };
+var item = new MenuButtonModel("Button1", "Button1Value", childrenItems);
+```
 
+## 🔗Static settings
+You can change the text of the navigation buttons.
+```C#
+// Default values
+public static class Settings
+{
+    public static string ButtonNextText = "»";
+    public static string ButtonPrevText = "«";
+    public static string ButtonUpText = "« up";
+    public const string PaginationData = "toPage";
+}
+...
+// Custom values
+Settings.ButtonNextText = "👉";
+Settings.ButtonPrevText = "👈";
+```
 
+## 👀Example of pagination
+![image](https://user-images.githubusercontent.com/36662441/160777044-90bfedee-9a00-4e88-ada2-a49f2b240e45.png)
+
+-> Click Button5 -> 
+
+![image](https://user-images.githubusercontent.com/36662441/160777220-8e10e0bf-ffe2-48bb-a9c0-337787c8a0f2.png)
+
+For a more detailed analysis, see the ```TelegramBotMenu.Tests```
