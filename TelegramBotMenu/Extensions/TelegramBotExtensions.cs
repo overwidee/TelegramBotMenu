@@ -93,7 +93,7 @@ public static class TelegramBotExtensions
             .ToList();
     }
 
-    private static (List<MenuButtonNumberModel>?, string) FindButtonsByButtonText(List<MenuButtonNumberModel> modelList,
+    private static (List<MenuButtonNumberModel>?, string?) FindButtonsByButtonText(List<MenuButtonNumberModel> modelList,
         string findTextButton, bool onlyChildren)
     {
         var findedItem = modelList.FirstOrDefault(x => x.Value == findTextButton);

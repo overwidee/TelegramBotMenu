@@ -29,5 +29,5 @@ internal class MenuButtonNumberModel : MenuButtonModel
     public new List<MenuButtonNumberModel>? ChildrenItems { get; }
 
     public int NumberPage { get; }
-    public string ParentItemValue { get; private set; }
+    public string? ParentItemValue { get; private set; }
 }

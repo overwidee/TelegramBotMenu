@@ -8,11 +8,19 @@
     <Authors>the_shichko</Authors>
     <Description>Extension for send message with pagination InlineKeyboardMarkup</Description>
     <RepositoryUrl>https://github.com/the-shichko/TelegramBotMenu</RepositoryUrl>
+    <PackageIcon>bot.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Telegram.Bot" Version="17.0.0" />
     <PackageReference Include="Telegram.Bot.Extensions.Polling" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="bot.png" />
+    <Content Include="bot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
